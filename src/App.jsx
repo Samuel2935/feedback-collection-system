@@ -27,6 +27,7 @@ function App() {
         <Route path="/create-account" element={<CreateAccount />}></Route>
         <Route path="/feedback" element={<Feedback />}></Route>
         <Route path="/setting" element={<Settings />}></Route>
+        <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/users" element={<Users />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Route>

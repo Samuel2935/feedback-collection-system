@@ -23,50 +23,11 @@ import { Button } from '../components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
 import Dropdownlist from '@/components/Dropdownlist';
-// import { useSignupMutation } from '../features/api/users.js';
-
-// Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character
-// const passwordValidation = new RegExp(
-//   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
-// );
-
-// const formSchema = z
-//   .object({
-//     firstName: z.string().min(1, {
-//       message: 'Please enter your first name',
-//     }),
-//     lastName: z.string().min(1, {
-//       message: 'Please enter your last name',
-//     }),
-//     email: z.string().email('Enter a valid email address.').min(1, {
-//       message: 'Email is required.',
-//     }),
-//     phone: z.string().min(11, {
-//       message: 'Phone number should be 11digits',
-//     }),
-//     password: z
-//       .string()
-//       .min(1, { message: 'Must have at least 1 character' })
-//       .regex(passwordValidation, {
-//         message: 'Your password is not valid',
-//       }),
-//     confirmPassword: z
-//       .string()
-//       .min(1, { message: 'Must have at least 1 character' })
-//       .regex(passwordValidation, {
-//         message: 'Your password is not valid',
-//       }),
-//   })
-//   .refine((data) => data.password === data.confirmPassword, {
-//     message: "Passwords don't match",
-//     path: ['confirmPassword'], // path of error
-//   });
 
 const Feedback = () => {
   const [value, setValue] = useState(3);
   const navigate = useNavigate();
   const form = useForm({
-    // resolver: zodResolver(formSchema),
     defaultValues: {
       firstName: '',
       lastName: '',
@@ -74,6 +35,7 @@ const Feedback = () => {
       phone: '',
       subject: '',
       message: '',
+      rating: '',
       
     },
   });
