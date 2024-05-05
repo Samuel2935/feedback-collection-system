@@ -13,8 +13,6 @@ import {
   FormMessage,
 } from '../components/ui/form';
 import { useForm } from 'react-hook-form';
-import * as z from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '../components/ui/input';
 import { useNavigate } from 'react-router-dom';
 // import { SyncLoader } from "react-spinners";

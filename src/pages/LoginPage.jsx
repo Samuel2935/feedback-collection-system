@@ -17,23 +17,18 @@ import {
 import { Input } from '@/components/ui/input';
 import { Link, useNavigate } from 'react-router-dom';
 
-const formSchema = z.object({
-  username: z.string().min(2, {
-    message: 'Username must be at least 2 characters.',
-  }),
-});
 
 export function LoginPage() {
   const navigate = useNavigate()
   const form = useForm({
-    resolver: zodResolver(formSchema),
     defaultValues: {
-      username: '',
+      email: '',
+      password: '',
     },
   });
 
   const onSubmit = (data) => {
-    navigate('/')
+    navigate('/admin')
     console.log(data);
   };
 

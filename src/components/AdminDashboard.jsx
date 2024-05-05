@@ -8,8 +8,9 @@ const AdminDashboard = () => {
     <div>
         <Sidebar/>
     <Navbarpanel/>
-    <Footer />
     <Admin/>
+    <Footer />
+  
     </div>
   );
 };
