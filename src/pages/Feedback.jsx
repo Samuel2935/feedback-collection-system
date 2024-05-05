@@ -1,6 +1,5 @@
 import Logo from '../assets/feedback7.png';
 import Rating from '@mui/material/Rating';
-import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -17,86 +16,71 @@ import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '../components/ui/input';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // import { SyncLoader } from "react-spinners";
 import { toast } from 'react-toastify';
 import { Button } from '../components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
+import Dropdownlist from '@/components/Dropdownlist';
 // import { useSignupMutation } from '../features/api/users.js';
 
 // Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character
-const passwordValidation = new RegExp(
-  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
-);
+// const passwordValidation = new RegExp(
+//   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
+// );
 
-const formSchema = z
-  .object({
-    firstName: z.string().min(1, {
-      message: 'Please enter your first name',
-    }),
-    lastName: z.string().min(1, {
-      message: 'Please enter your last name',
-    }),
-    email: z.string().email('Enter a valid email address.').min(1, {
-      message: 'Email is required.',
-    }),
-    phone: z.string().min(11, {
-      message: 'Phone number should be 11digits',
-    }),
-    password: z
-      .string()
-      .min(1, { message: 'Must have at least 1 character' })
-      .regex(passwordValidation, {
-        message: 'Your password is not valid',
-      }),
-    confirmPassword: z
-      .string()
-      .min(1, { message: 'Must have at least 1 character' })
-      .regex(passwordValidation, {
-        message: 'Your password is not valid',
-      }),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords don't match",
-    path: ['confirmPassword'], // path of error
-  });
+// const formSchema = z
+//   .object({
+//     firstName: z.string().min(1, {
+//       message: 'Please enter your first name',
+//     }),
+//     lastName: z.string().min(1, {
+//       message: 'Please enter your last name',
+//     }),
+//     email: z.string().email('Enter a valid email address.').min(1, {
+//       message: 'Email is required.',
+//     }),
+//     phone: z.string().min(11, {
+//       message: 'Phone number should be 11digits',
+//     }),
+//     password: z
+//       .string()
+//       .min(1, { message: 'Must have at least 1 character' })
+//       .regex(passwordValidation, {
+//         message: 'Your password is not valid',
+//       }),
+//     confirmPassword: z
+//       .string()
+//       .min(1, { message: 'Must have at least 1 character' })
+//       .regex(passwordValidation, {
+//         message: 'Your password is not valid',
+//       }),
+//   })
+//   .refine((data) => data.password === data.confirmPassword, {
+//     message: "Passwords don't match",
+//     path: ['confirmPassword'], // path of error
+//   });
 
 const Feedback = () => {
   const [value, setValue] = useState(3);
   const navigate = useNavigate();
   const form = useForm({
-    resolver: zodResolver(formSchema),
+    // resolver: zodResolver(formSchema),
     defaultValues: {
       firstName: '',
       lastName: '',
       email: '',
       phone: '',
-      password: '',
-      confirmPassword: '',
+      subject: '',
+      message: '',
+      
     },
   });
 
-  //   const [signup] = useSignupMutation();
-
-  const successNotifying = (msg) => {
-    toast.success(msg);
-  };
-
-  const onSubmit = async () => {
-    // try {
-    //   const response = await signup(data).unwrap();
-    //   console.log(response, 'REGISTERRRRR');
-    //   successNotifying(response.message);
-    //   navigate('/verification-mail', {
-    //     state: {
-    //       email: response?.data?.user?.email,
-    //     },
-    //   });
-    // } catch (error) {
-    //   toast.error(error.data.message);
-    //   console.error('registration failed:', error);
-    // }
+  const onSubmit =  (data) => {
+    navigate('/');
+    console.log(data);
   };
 
   return (
@@ -180,14 +164,17 @@ const Feedback = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="">Phone number</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="09034xxxxxx"
-                    className="border-neutral-300"
-                    type="tel"
-                    {...field}
-                  />
-                </FormControl>
+                <div className="flex gap-2">
+                  <Dropdownlist />
+                  <FormControl>
+                    <Input
+                      placeholder="9034xxxxxx"
+                      className="border-neutral-300"
+                      type="tel"
+                      {...field}
+                    />
+                  </FormControl>
+                </div>
                 <FormDescription />
                 <FormMessage />
               </FormItem>
@@ -240,7 +227,7 @@ const Feedback = () => {
             >
               <Typography component="legend">Rate us now</Typography>
               <Rating
-                name="simple-controlled"
+                name="rating"
                 value={value}
                 onChange={(event, newValue) => {
                   setValue(newValue);
@@ -253,19 +240,8 @@ const Feedback = () => {
           onClick={form.handleSubmit(onSubmit)}
           className="w-full h-12 mt-2 bg-blue-600 hover:bg-blue-400"
         >
-          {/* {isLoading ? (
-              <SyncLoader size={"0.8rem"} color="#ffffff" />
-            ) : (
-              "Create account"
-            )} */}
           Submit Feedback
         </Button>
-        <p className="mt-4 text-sm font-normal text-center">
-          Already have an account ?{' '}
-          <span className="font-semibold text-violet-600">
-            <Link to={'/login'}>Log In</Link>
-          </span>
-        </p>
       </Form>
     </div>
   );

@@ -15,7 +15,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -24,6 +24,7 @@ const formSchema = z.object({
 });
 
 export function LoginPage() {
+  const navigate = useNavigate()
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -31,14 +32,16 @@ export function LoginPage() {
     },
   });
 
-  const handleSubmit = () => {
-    // do something here
+  const onSubmit = (data) => {
+    navigate('/')
+    console.log(data);
   };
+
 
   return (
     <Form {...form}>
       <form
-        onSubmit={() => handleSubmit()}
+        onSubmit={() => form.handleSubmit()}
         className="max-w-sm mx-auto mt-5 bg-body-tertiary p-4 space-y-2"
       >
         <div>
@@ -86,7 +89,7 @@ export function LoginPage() {
             <Link to={'/create-account'}>Reset password</Link>
           </span>
         </p>
-        <Button  type="submit">Login</Button>
+        <Button  onClick={form.handleSubmit(onSubmit)} type="submit">Login</Button>
       </form>
     </Form>
   );

@@ -30,7 +30,7 @@ function Sidebar() {
               />
 
               <div className="flex bg-blue-100 p-2 text-blue-600 rounded-sm">
-                <LucideLayoutDashboard className="mx-2" /> <Link style={{textDecorationLine:"none",color:"rgb(37 99 235)"}}>Dashboard</Link>
+                <LucideLayoutDashboard className="mx-2" /> <Link to='/admin' style={{textDecorationLine:"none",color:"rgb(37 99 235)"}}>Dashboard</Link>
               </div>
               <div className="flex ">
                 <ActivityIcon className="mx-2" /><Link style={{textDecorationLine:"none",color:"#777"}}>Activities</Link>

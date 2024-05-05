@@ -18,6 +18,7 @@ import { Link, useNavigate } from 'react-router-dom';
 // import { SyncLoader } from "react-spinners";
 import { toast } from 'react-toastify';
 import { Button } from '../components/ui/button';
+import Dropdownlist from '@/components/Dropdownlist';
 // import { useSignupMutation } from '../features/api/users.js';
 
 // Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character
@@ -71,27 +72,31 @@ const CreateAccount = () => {
     },
   });
 
-  //   const [signup] = useSignupMutation();
+    // const [signup] = useSignupMutation();
 
-  const successNotifying = (msg) => {
-    toast.success(msg);
-  };
+  // const successNotifying = (msg) => {
+  //   toast.success(msg);
+  // };
 
-  const onSubmit = async () => {
-    // try {
-    //   const response = await signup(data).unwrap();
-    //   console.log(response, 'REGISTERRRRR');
-    //   successNotifying(response.message);
-    //   navigate('/verification-mail', {
-    //     state: {
-    //       email: response?.data?.user?.email,
-    //     },
-    //   });
-    // } catch (error) {
-    //   toast.error(error.data.message);
-    //   console.error('registration failed:', error);
-    // }
+  // const onSubmit = async () => {
+  //   try {
+  //     const response = await signup(data).unwrap();
+  //     console.log(response, 'REGISTERRRRR');
+  //     successNotifying(response.message);
+  //     navigate('/verification-mail', {
+  //       state: {
+  //         email: response?.data?.user?.email,
+  //       },
+  //     });
+  //   } catch (error) {
+  //     toast.error(error.data.message);
+  //     console.error('registration failed:', error);
+  //   }
     
+  // };
+  const onSubmit = (data) => {
+    navigate('/feedback')
+    console.log(data);
   };
 
   return (
@@ -172,14 +177,18 @@ const CreateAccount = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="">Phone number</FormLabel>
+                <div className='flex gap-2'>
+                <Dropdownlist/>
                   <FormControl>
+                 
                     <Input
-                      placeholder="09034xxxxxx"
+                      placeholder="9034xxxxxx"
                       className="border-neutral-300"
                       type="tel"
                       {...field}
                     />
                   </FormControl>
+                </div>
                   <FormDescription />
                   <FormMessage />
                 </FormItem>
@@ -226,9 +235,9 @@ const CreateAccount = () => {
           </form>
           <p className="mt-6 text-sm font-normal">
             By clicking on create account below you agree to our
-            <Link className="font-semibold text-purple-600">Terms of use</Link>
+            <Link className="font-semibold text-blue-600">Terms of use</Link>
             {' and '}
-            <Link className="font-semibold text-purple-600">
+            <Link className="font-semibold text-blue-600">
               Privacy policy.
             </Link>
           </p>
@@ -245,7 +254,7 @@ const CreateAccount = () => {
           </Button>
           <p className="mt-4 text-sm font-normal text-center">
             Already have an account ?{' '}
-            <span className="font-semibold text-violet-600">
+            <span className="font-semibold text-blue-600">
               <Link to={'/login'}>Log In</Link>
             </span>
           </p>

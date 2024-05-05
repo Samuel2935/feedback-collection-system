@@ -15,10 +15,16 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
+import Sidebar from "./Sidebar"
+import Navbarpanel from "./Navbarpanel"
+import Footer from "./Footer"
 
 export function Settings() {
   return (
- <div className=" flex w-5/6 justify-center ">
+ <div>
+     <Sidebar/>
+    <Navbarpanel/> 
+  <div className=" flex w-5/6 justify-center ">
        <Tabs defaultValue="account" className="w-[400px]">
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="account">Account</TabsTrigger>
@@ -71,6 +77,8 @@ export function Settings() {
         </Card>
       </TabsContent>
     </Tabs>
+ </div>
+ <Footer/>
  </div>
   )
 }

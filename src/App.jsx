@@ -22,11 +22,10 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="" element={<RootLayout />}>
-        <Route index element={<AdminDashboard />}></Route>
-        <Route path="/landing-page" element={<LandingPage />}></Route>
+        <Route index element={<LandingPage />}></Route>
+        <Route path="/admin" element={<AdminDashboard />}></Route>
         <Route path="/create-account" element={<CreateAccount />}></Route>
         <Route path="/feedback" element={<Feedback />}></Route>
-        <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/setting" element={<Settings />}></Route>
         <Route path="/users" element={<Users />}></Route>
         <Route path="*" element={<NotFound />}></Route>
