@@ -1,1 +1,1 @@
-Feedback Collection System
+Building a feedback collection system that collects the users feedback. The software requirement specification (srs) of this project is simple; authenticate users, multi-channel accessibility, and notification system for timely updates. Administrators benefits from analytical tools, feedback trackings and integration capabilities.
