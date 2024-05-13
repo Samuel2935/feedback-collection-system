@@ -2,6 +2,8 @@ import Logo from '../assets/feedback7.png';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { Button } from "@/components/ui/button"
+
 
 import {
   Form,
@@ -15,16 +17,16 @@ import {
 import { useForm } from 'react-hook-form';
 import { Input } from '../components/ui/input';
 import { useNavigate } from 'react-router-dom';
-// import { SyncLoader } from "react-spinners";
-import { toast } from 'react-toastify';
-import { Button } from '../components/ui/button';
+import { toast } from "react-toastify";
 import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
 import Dropdownlist from '@/components/Dropdownlist';
+import { Toast, ToastProvider } from '@/components/ui/toast';
 
 const Feedback = () => {
   const [value, setValue] = useState(3);
   const navigate = useNavigate();
+  
   const form = useForm({
     defaultValues: {
       firstName: '',
@@ -38,12 +40,23 @@ const Feedback = () => {
     },
   });
 
+  const successNotifying = () => {
+    toast({
+      description: "Your message has been sent.",
+     
+    })
+    console.log("toast is here")
+  };
+
+
   const onSubmit =  (data) => {
+    successNotifying();
     navigate('/');
     console.log(data);
   };
 
   return (
+    <ToastProvider>
     <div className="w-5/6 lg:w-[60%] min-h-screen pt-5 p-10 mx-auto hideScrollbar bg-body-tertiary rounded-md ">
       <div>
         <img
@@ -53,7 +66,7 @@ const Feedback = () => {
         />
       </div>
       <h1 className="md:text-4xl text-2xl font-medium leading-[40px] mt-8">
-        Your Feedback
+        Leave a Feedback
       </h1>
       <p className="mt-px text-base font-normal text-neutral-600">
         What is your thought on our product?
@@ -198,12 +211,16 @@ const Feedback = () => {
         </form>
         <Button
           onClick={form.handleSubmit(onSubmit)}
+       
+          
           className="w-full h-12 mt-2 bg-blue-600 hover:bg-blue-400"
         >
           Submit Feedback
         </Button>
       </Form>
+      <Toast/>
     </div>
+    </ToastProvider>
   );
 };
 

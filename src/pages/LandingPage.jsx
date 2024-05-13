@@ -12,9 +12,11 @@ const LandingPage = () => {
       <div className=" max-w-2xl mx-auto">
         <div className="p-4 ml-10 mt-20">
           <h1>
-            Unlock <span className="text-violet-300">Efficiency.</span>
+            There is no failure.{' '}
+            <span className="text-violet-300">Only feedback.</span>
           </h1>
-          <p>Your Feedback is our guide; kindly review our product today</p>
+          <p>“Feedback is the breakfast of champions.”</p>
+        <span className='font-thin text-xs'>  – Ken Blanchard</span>
         </div>
 
         <div className="space-x-4 ml-20 ">

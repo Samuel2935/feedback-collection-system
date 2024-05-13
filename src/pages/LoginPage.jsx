@@ -1,8 +1,6 @@
 'use client';
 import SideImg from '../assets/feedback7.png';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
 import {
