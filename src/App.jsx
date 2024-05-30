@@ -10,7 +10,6 @@ import RootLayout from './components/RootLayout';
 
 import NotFound from './pages/NotFound';
 import LandingPage from './pages/LandingPage';
-import DashboardLayout from './Layout/DashboardLayout';
 import CreateAccount from './pages/CreateAcount';
 import Feedback from './pages/Feedback';
 import { LoginPage } from './pages/LoginPage';

@@ -50,7 +50,6 @@ export function LoginPage() {
                 <Input placeholder="Enter your email" {...field} />
               </FormControl>
               <FormDescription>
-                {/* This is your public display name. */}
               </FormDescription>
               <FormMessage />
             </FormItem>
