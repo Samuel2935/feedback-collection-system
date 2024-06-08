@@ -14,9 +14,12 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { Eye, EyeOff } from 'lucide-react';
 
 
 export function LoginPage() {
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate()
   const form = useForm({
     defaultValues: {
@@ -63,12 +66,25 @@ export function LoginPage() {
             <FormItem>
               <FormLabel className="">Password</FormLabel>
               <FormControl>
-                <Input
-                  placeholder="Enter your password"
-                  className="border-neutral-300 "
-                  type="password"
-                  {...field}
-                />
+              <Input
+                      placeholder="Enter Password"
+                      className="border-neutral-300"
+                      type={showPassword ? "text" : "password"}
+                      {...field}
+                      rightIcon={
+                        showPassword ? (
+                          <Eye
+                            className="cursor-pointer"
+                            onClick={() => setShowPassword(!showPassword)}
+                          />
+                        ) : (
+                          <EyeOff
+                            className="cursor-pointer"
+                            onClick={() => setShowPassword(!showPassword)}
+                          />
+                        )
+                      }
+                    />
               </FormControl>
               <FormDescription />
               <FormMessage />
